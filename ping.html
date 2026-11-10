@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ping Simulator</title>
+</head>
+<body>
+    <h2>Network Ping Simulator</h2>
+
+    <input type="text" id="host" placeholder="Enter hostname">
+    <button onclick="simulatePing()">Ping</button>
+
+    <pre id="output"></pre>
+
+    <script>
+        function simulatePing() {
+            const host = document.getElementById("host").value;
+            const output = document.getElementById("output");
+
+            if (!host) {
+                output.textContent = "Please enter a hostname.";
+                return;
+            }
+
+            let result = `Pinging ${host}...\n\n`;
+
+            for (let i = 1; i <= 4; i++) {
+                const time = Math.floor(Math.random() * 100) + 1;
+                result += `Reply from ${host}: time=${time}ms\n`;
+            }
+
+            output.textContent = result;
+        }
+    </script>
+</body>
+</html>
